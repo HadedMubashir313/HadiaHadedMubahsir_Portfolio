@@ -1436,3 +1436,45 @@ main > .section.dark:not(#intro) { margin: 32px 52px; border-radius: 18px; }
     .hero-actions .btn, .contact-actions .btn { margin: 5px; }
     .contact-info { max-width: 100%; }
 }
+
+
+/* Uniform card interaction: subtle lift and shadow, without changing the palette. */
+.project-card, .experience-item, .blog-item, .education-item,
+.learning-item, .certifications li {
+    transition: transform 280ms ease, box-shadow 280ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+    .project-card:hover, .experience-item:hover, .blog-item:hover,
+    .education-item:hover, .learning-item:hover, .certifications li:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, .20);
+    }
+}
+/* Keep achievements without cards: only a subtle lift on hover. */
+#achievements .achievement-item { transition: transform 280ms ease; }
+@media (hover: hover) and (pointer: fine) {
+    #achievements .achievement-item:hover { transform: translateY(-6px); }
+}
+/* Footer mirrors the deep-brown hero, with rounded top corners only. */
+#contact .contact-footer {
+    background: var(--brown);
+    color: var(--white);
+    border-radius: 34px 34px 0 0;
+    margin-top: 42px;
+    overflow: hidden;
+}
+#contact .contact-footer .wrapper {
+    border-top: 0;
+    padding: 26px 0;
+}
+#contact .contact-footer a:hover { color: var(--tan); }
+@media (max-width: 499px) {
+    #contact .contact-footer { border-radius: 22px 22px 0 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .project-card, .experience-item, .blog-item, .education-item,
+    .learning-item, .certifications li, #achievements .achievement-item {
+        transition: none !important;
+        transform: none !important;
+    }
+}
